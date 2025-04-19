@@ -7,12 +7,20 @@
     <div
       class="img-container flex flex-row flex-nowrap overflow-hidden relative aspect-[3/4]"
     >
+      <div
+        *ngIf="getSaleTag(product.taglist)"
+        class="absolute top-2 left-2 text-caption font-semibold px-3 py-1 rounded-full shadow-sm z-10"
+        [ngClass]="getSaleTag(product.taglist)?.style"
+      >
+        {{ getSaleTag(product.taglist)?.description }}
+      </div>
       <img
         [src]="product.images[1].url"
         [alt]="product.name"
         class="w-full object-cover mb-2"
       />
     </div>
+
     <app-product-price
       class="product-price font-bold text-primary mt-2"
       [taglist]="product.taglist"
@@ -21,15 +29,26 @@
     ></app-product-price>
     <h2 class="font-semibold">{{ product.brandName }}</h2>
     <h2 class="truncate w-full block">{{ product.name }}</h2>
+
     <div class="flex flex-column gap-1">
-      <img
-        *ngFor="let color of product.availableColorIcons"
-        [src]="color.url"
-        class="w-4 mt-2 mb-4"
-        [ngClass]="
-          color.altText === 'White' ? 'border rounded-[8px] border-black' : ''
-        "
-      />
+      <ng-container
+        *ngFor="let color of product.availableColorIcons; let i = index"
+      >
+        <img
+          *ngIf="i < 5"
+          [src]="color.url"
+          class="w-4 mt-2 mb-4"
+          [ngClass]="
+            color.altText === 'White' ? 'border rounded-[8px] border-black' : ''
+          "
+        />
+        <span
+          *ngIf="i === 5 && product.availableColorIcons.length > 5"
+          class="text-caption mt-2 mb-4 font-semibold"
+        >
+          + {{ product.availableColorIcons.length - 5 }}
+        </span>
+      </ng-container>
     </div>
   </a>
 </div>

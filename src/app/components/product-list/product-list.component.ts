@@ -10,4 +10,34 @@ import { Product } from '../../models/product.model';
 })
 export class ProductListComponent {
   @Input() products: Product[] = [];
+
+  getSaleTag(taglist: any[]): { description: string; style: string } | null {
+    if (!taglist || taglist.length === 0) return null;
+
+    const tag = taglist.find((t) => t.code !== 'PromotedCategoryTag');
+    if (!tag) return null;
+
+    if (tag.code.toLowerCase().includes('pricereduction')) {
+      return {
+        description: tag.description,
+        style: 'bg-secondary text-white',
+      };
+    }
+
+    const whiteTags = [
+      'SizeInformationTagXxl',
+      'NewTag',
+      'SustainableTag',
+      'OnlineExclusiveTag',
+    ];
+
+    if (whiteTags.includes(tag.code)) {
+      return {
+        description: tag.description,
+        style: 'bg-white text-black',
+      };
+    }
+
+    return null;
+  }
 }

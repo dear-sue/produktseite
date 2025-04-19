@@ -13,7 +13,7 @@ export class ProductPriceComponent {
   @Input() defaultFormattedPrice: string = '';
 
   isOnSale(): boolean {
-    return this.taglist?.some((tag) => tag.code === 'SaleTag');
+    return this.taglist?.some((tag) => tag.code === 'SaleTag') ?? false;
   }
 
   getBuyPrice(): string | null {
