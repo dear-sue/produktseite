@@ -1,0 +1,35 @@
+<div class="product-list flex flex-wrap justify-between gap-y-4">
+  <a
+    class="product-card block w-[48%] sm:w-[32%] no-underline text-inherit"
+    *ngFor="let product of products"
+    [href]="'https://www.deichmann.com/de-de' + product.url"
+  >
+    <div
+      class="img-container flex flex-row flex-nowrap overflow-hidden relative aspect-[3/4]"
+    >
+      <img
+        [src]="product.images[1].url"
+        [alt]="product.name"
+        class="w-full object-cover mb-2"
+      />
+    </div>
+    <app-product-price
+      class="product-price font-bold text-primary mt-2"
+      [taglist]="product.taglist"
+      [allPrices]="product.allPrices"
+      [defaultFormattedPrice]="product.price.formattedValue"
+    ></app-product-price>
+    <h2 class="font-semibold">{{ product.brandName }}</h2>
+    <h2 class="truncate w-full block">{{ product.name }}</h2>
+    <div class="flex flex-column gap-1">
+      <img
+        *ngFor="let color of product.availableColorIcons"
+        [src]="color.url"
+        class="w-4 mt-2 mb-4"
+        [ngClass]="
+          color.altText === 'White' ? 'border rounded-[8px] border-black' : ''
+        "
+      />
+    </div>
+  </a>
+</div>
