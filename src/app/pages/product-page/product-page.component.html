@@ -1,0 +1,58 @@
+<div class="p-4 max-w-[937px] mx-auto">
+  <h1 class="mb-4">{{ title }}</h1>
+
+  <div class="relative w-full max-w-[33.3%] ml-auto mb-4 max-w-1/3">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="onSearchChange()"
+      placeholder="Produkte durchsuchen..."
+      aria-label="Produkte durchsuchen..."
+      class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+    />
+
+    <button
+      *ngIf="searchTerm"
+      (click)="clearSearch()"
+      type="button"
+      class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary focus:outline-none border-none"
+      aria-label="Feld leeren"
+    >
+      ✕
+    </button>
+  </div>
+
+  <app-product-list [products]="paginatedProducts"></app-product-list>
+
+  <!-- Pagination Controls -->
+  <div
+    *ngIf="totalPages.length > 0"
+    class="pagination flex justify-center mt-[48px] space-x-2"
+  >
+    <button
+      class="text-xl border border-transparent hover:border-primary transition-colors"
+      [disabled]="currentPage === 1"
+      (click)="changePage(currentPage - 1)"
+    >
+      &laquo;
+    </button>
+
+    <button
+      *ngFor="let page of totalPages"
+      (click)="changePage(page)"
+      [class.bg-primary]="currentPage === page"
+      [class.text-white]="currentPage === page"
+      class="border border-transparent hover:border-primary transition-colors"
+    >
+      {{ page }}
+    </button>
+
+    <button
+      class="text-xl border border-transparent hover:border-primary transition-colors"
+      [disabled]="currentPage === totalPages.length"
+      (click)="changePage(currentPage + 1)"
+    >
+      &raquo;
+    </button>
+  </div>
+</div>
