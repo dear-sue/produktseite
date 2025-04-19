@@ -26,14 +26,4 @@ export class AppComponent implements OnInit {
       this.filteredProducts = data;
     });
   }
-
-  filterProducts(): void {
-    const term = this.searchTerm.toLowerCase();
-    this.filteredProducts = this.products.filter(
-      (product) =>
-        product.name.toLowerCase().includes(term) ||
-        product.brandName.toLowerCase().includes(term) ||
-        product.code.toLowerCase().includes(term)
-    );
-  }
 }

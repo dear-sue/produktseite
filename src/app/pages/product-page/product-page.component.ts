@@ -50,16 +50,34 @@ export class ProductPageComponent implements OnInit {
 
   onSearchChange(): void {
     const term = this.searchTerm.trim().toLowerCase();
+
     if (term.length > 0) {
-      this.filteredProducts = this.products.filter(
-        (p) =>
-          p.name.toLowerCase().includes(term) ||
-          p.brandName.toLowerCase().includes(term) ||
-          p.description?.toLowerCase().includes(term)
-      );
+      this.filteredProducts = this.products.filter((product) => {
+        const matchesBasic =
+          product.name.toLowerCase().includes(term) ||
+          product.brandName.toLowerCase().includes(term) ||
+          product.description?.toLowerCase().includes(term);
+
+        const matchesColor =
+          product.availableColorIcons?.some((color) =>
+            color.altText.toLowerCase().includes(term)
+          ) ?? false;
+
+        const matchesSize =
+          product.variantMatrix?.some((variant) =>
+            variant.sizeMap?.some(
+              (size) =>
+                size.sizeSystem?.code === 'EU' &&
+                size.value.toLowerCase().includes(term)
+            )
+          ) ?? false;
+
+        return matchesBasic || matchesColor || matchesSize;
+      });
     } else {
       this.filteredProducts = [...this.products];
     }
+
     this.currentPage = 1;
   }
 
