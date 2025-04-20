@@ -103,7 +103,7 @@ describe('ProductService', () => {
 
     const req = httpMock.expectOne('/assets/products.json');
     expect(req.request.method).toBe('GET');
-    req.flush(dummyProducts);
+    req.flush({ products: dummyProducts });
   });
 
   it('should handle HTTP errors when fetching products', () => {
