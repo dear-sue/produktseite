@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   searchTerm: string = '';
-  title = 'Produktseite';
+  title = 'Sneaker';
 
   constructor(private productService: ProductService) {}
 

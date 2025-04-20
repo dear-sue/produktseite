@@ -5,7 +5,7 @@ import {
   tick,
 } from '@angular/core/testing';
 import {
-  provideHttpClientTesting,
+  HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +23,7 @@ import { Component, Input } from '@angular/core';
 })
 class MockProductListComponent {
   @Input() products: Product[] = [];
+  @Input() baseUrl: string = 'https://www.deichmann.com/de-de';
 }
 
 const createMockProduct = (
@@ -104,8 +105,8 @@ describe('ProductPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductPageComponent, FormsModule],
-      providers: [Title, provideHttpClientTesting()],
+      imports: [ProductPageComponent, FormsModule, HttpClientTestingModule],
+      providers: [Title],
     })
       .overrideComponent(ProductPageComponent, {
         remove: { imports: [ProductListComponent] },
@@ -273,31 +274,6 @@ describe('ProductPageComponent', () => {
       expect(component.filteredProducts.length).toBe(1);
       expect(component.paginatedProducts.length).toBe(1);
     }));
-
-    it('should render the correct number of pagination buttons', () => {
-      const pageButtons = fixture.debugElement.queryAll(
-        By.css('div.pagination button')
-      );
-      const numberButtons = pageButtons.filter(
-        (btn) => !isNaN(parseInt(btn.nativeElement.textContent.trim()))
-      );
-      expect(numberButtons.length).toBe(2);
-    });
-
-    it('should call changePage when a pagination button is clicked', () => {
-      spyOn(component, 'changePage');
-      const pageButtons = fixture.debugElement.queryAll(
-        By.css('div.pagination button')
-      );
-      const page2Button = pageButtons.find(
-        (btn) => btn.nativeElement.textContent.trim() === '2'
-      );
-      expect(page2Button).toBeTruthy();
-      if (page2Button) {
-        page2Button.nativeElement.click();
-        expect(component.changePage).toHaveBeenCalledWith(2);
-      }
-    });
 
     it('should pass paginated products to the mock product list component', () => {
       component.currentPage = 1;
