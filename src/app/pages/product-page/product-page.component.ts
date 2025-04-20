@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { ProductService } from '../../services/product.service';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../models/product.model';
 import { ProductListComponent } from '../../components/product-list/product-list.component';
-
+import { take } from 'rxjs';
 @Component({
   selector: 'app-product-page',
   standalone: true,
@@ -23,7 +23,10 @@ export class ProductPageComponent implements OnInit {
   @Input() title: string = 'Sneaker';
   @Input() baseUrl: string = 'https://www.deichmann.com/de-de';
 
-  constructor(private http: HttpClient, private titleService: Title) {}
+  constructor(
+    private productService: ProductService,
+    private titleService: Title
+  ) {}
 
   get paginatedProducts(): Product[] {
     const start = (this.currentPage - 1) * this.itemsPerPage;
@@ -41,10 +44,12 @@ export class ProductPageComponent implements OnInit {
   ngOnInit(): void {
     const pageTitle = this.title || 'Sneaker';
     this.titleService.setTitle(pageTitle);
-    this.http
-      .get<{ products: Product[] }>('/assets/products.json')
-      .subscribe((data) => {
-        this.products = data.products;
+
+    this.productService
+      .getProducts()
+      .pipe(take(1))
+      .subscribe((data: Product[]) => {
+        this.products = data;
         this.filteredProducts = [...this.products];
       });
   }
