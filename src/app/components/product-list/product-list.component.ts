@@ -11,6 +11,11 @@ import { Product } from '../../models/product.model';
 export class ProductListComponent {
   @Input() products: Product[] = [];
 
+  getPreviewImage(images: any[]): string {
+    const preview = images.find((img) => img.format === 'preview');
+    return preview?.url || images[0]?.url || 'assets/fallback.jpg';
+  }
+
   getSaleTag(taglist: any[]): { description: string; style: string } | null {
     if (!taglist || taglist.length === 0) return null;
 

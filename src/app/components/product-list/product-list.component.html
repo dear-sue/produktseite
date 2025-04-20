@@ -15,7 +15,7 @@
         {{ getSaleTag(product.taglist)?.description }}
       </div>
       <img
-        [src]="product.images[1].url"
+        [src]="getPreviewImage(product.images)"
         [alt]="product.name"
         class="w-full object-cover mb-2"
       />
