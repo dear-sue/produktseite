@@ -2,7 +2,7 @@
   <a
     class="product-card block w-[48%] sm:w-[32%] no-underline text-inherit"
     *ngFor="let product of products"
-    [href]="'https://www.deichmann.com/de-de' + product.url"
+    [href]="baseUrl + product.url"
   >
     <div
       class="img-container flex flex-row flex-nowrap overflow-hidden relative aspect-[3/4]"
