@@ -1,0 +1,16 @@
+<!-- no sale tag -->
+<div *ngIf="isOnSale(); else regularPrice">
+  <span class="text-secondary font-bold">
+    {{ getBuyPrice() }}
+  </span>
+  <span class="text-sm text-gray-500 line-through">
+    {{ getPreferredPrice() }}
+  </span>
+</div>
+
+<!-- no sale tag -->
+<ng-template #regularPrice>
+  <p class="text-primary font-bold">
+    {{ defaultFormattedPrice }}
+  </p>
+</ng-template>

@@ -1,0 +1,29 @@
+/* product-list.component.scss */
+
+.product-card {
+  display: grid;
+  grid-template-rows: auto min-content min-content min-content 1.5rem;
+  grid-template-areas:
+    'image'
+    'price'
+    'brand'
+    'name'
+    'colors';
+}
+
+.product-name {
+  grid-area: name;
+}
+
+.product-brand,
+.product-description {
+  grid-area: brand;
+}
+
+.product-price {
+  grid-area: price;
+}
+
+img.White {
+  border: 1px solid black;
+}
