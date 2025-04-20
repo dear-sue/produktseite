@@ -21,10 +21,11 @@ export class ProductPriceComponent {
     return buy?.formattedValue || null;
   }
 
-  getUvpPrice(): string | null {
-    const uvp = this.allPrices?.find(
-      (p) => p.priceType === 'UVP' || p.priceType === 'TOP'
+  getPreferredPrice(): string | null {
+    return (
+      this.allPrices?.find((p) => p.priceType === 'TOP')?.formattedValue ||
+      this.allPrices?.find((p) => p.priceType === 'UVP')?.formattedValue ||
+      null
     );
-    return uvp?.formattedValue || null;
   }
 }
