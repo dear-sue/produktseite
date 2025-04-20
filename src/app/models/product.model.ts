@@ -19,7 +19,7 @@ export interface Product {
   volumePricesFlag: boolean;
 }
 
-interface Price {
+export interface Price {
   currencyIso: string;
   formattedValue: string;
   priceType: string;
@@ -42,7 +42,7 @@ interface Stock {
   stockLevelStatus: string;
 }
 
-interface Tag {
+export interface Tag {
   backgroundColor?: string;
   code: string;
   description: string;
