@@ -10,6 +10,7 @@ import { Product } from '../../models/product.model';
 })
 export class ProductListComponent {
   @Input() products: Product[] = [];
+  @Input() baseUrl!: string;
 
   getPreviewImage(images: any[]): string {
     const preview = images.find((img) => img.format === 'preview');

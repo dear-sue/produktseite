@@ -21,6 +21,7 @@ export class ProductPageComponent implements OnInit {
   itemsPerPage: number = 12;
 
   @Input() title: string = 'Sneaker';
+  @Input() baseUrl: string = 'https://www.deichmann.com/de-de';
 
   constructor(private http: HttpClient, private titleService: Title) {}
 
