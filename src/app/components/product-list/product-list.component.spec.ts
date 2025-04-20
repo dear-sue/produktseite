@@ -112,6 +112,7 @@ describe('ProductListComponent', () => {
     fixture = TestBed.createComponent(ProductListComponent);
     component = fixture.componentInstance;
 
+    component.baseUrl = 'https://www.deichmann.com/de-de';
     component.products = mockProducts;
 
     fixture.detectChanges();
