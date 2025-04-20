@@ -120,23 +120,23 @@ describe('ProductPriceComponent', () => {
       fixture.detectChanges();
 
       const buyPriceElement = fixture.debugElement.query(
-        By.css('span.text-secondary.font-bold')
+        By.css('span.text-secondary.font-bold'),
       );
       const uvpElement = fixture.debugElement.query(
-        By.css('span.text-sm.text-gray-500.line-through')
+        By.css('span.text-sm.text-gray-500.line-through'),
       );
 
       expect(buyPriceElement).toBeTruthy();
       expect(buyPriceElement.nativeElement.textContent.trim()).toBe(
-        mockBuyPrice.formattedValue
+        mockBuyPrice.formattedValue,
       );
       expect(uvpElement).toBeTruthy();
       expect(uvpElement.nativeElement.textContent.trim()).toBe(
-        mockUvpPrice.formattedValue
+        mockUvpPrice.formattedValue,
       );
 
       const regularPriceElement = fixture.debugElement.query(
-        By.css('p.text-primary.font-bold')
+        By.css('p.text-primary.font-bold'),
       );
       expect(regularPriceElement).toBeFalsy();
     });
@@ -148,18 +148,18 @@ describe('ProductPriceComponent', () => {
       fixture.detectChanges();
 
       const regularPriceElement = fixture.debugElement.query(
-        By.css('p.text-primary.font-bold')
+        By.css('p.text-primary.font-bold'),
       );
       expect(regularPriceElement).toBeTruthy();
       expect(regularPriceElement.nativeElement.textContent.trim()).toBe(
-        mockBuyPrice.formattedValue
+        mockBuyPrice.formattedValue,
       );
 
       const buyPriceSaleElement = fixture.debugElement.query(
-        By.css('span.text-secondary.font-bold')
+        By.css('span.text-secondary.font-bold'),
       );
       const uvpSaleElement = fixture.debugElement.query(
-        By.css('span.text-sm.text-gray-500.line-through')
+        By.css('span.text-sm.text-gray-500.line-through'),
       );
       expect(buyPriceSaleElement).toBeFalsy();
       expect(uvpSaleElement).toBeFalsy();
@@ -171,19 +171,19 @@ describe('ProductPriceComponent', () => {
       fixture.detectChanges();
 
       const buyPriceElement = fixture.debugElement.query(
-        By.css('span.text-secondary.font-bold')
+        By.css('span.text-secondary.font-bold'),
       );
       const topElement = fixture.debugElement.query(
-        By.css('span.text-sm.text-gray-500.line-through')
+        By.css('span.text-sm.text-gray-500.line-through'),
       );
 
       expect(buyPriceElement).toBeTruthy();
       expect(buyPriceElement.nativeElement.textContent.trim()).toBe(
-        mockBuyPrice.formattedValue
+        mockBuyPrice.formattedValue,
       );
       expect(topElement).toBeTruthy();
       expect(topElement.nativeElement.textContent.trim()).toBe(
-        mockTopPrice.formattedValue
+        mockTopPrice.formattedValue,
       );
     });
   });

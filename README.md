@@ -4,7 +4,6 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 A clean and modern Angular project built with **TypeScript** and **Tailwind CSS** to display a list of products in a responsive grid layout. Includes **pagination**, **search filtering**, and a component-based structure using **standalone components**.
 
-
 # 🛍️ Product Showcase App
 
 A clean and modern Angular project built with **TypeScript** and **Tailwind CSS** to display a list of products in a responsive grid layout.  
@@ -87,7 +86,6 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
-
 ## 📁 Project Structure
 
 ```bash
@@ -107,3 +105,4 @@ src/
 ├── assets/
 │   └── products.json
 
+```

@@ -4,11 +4,11 @@
   display: grid;
   grid-template-rows: auto min-content min-content min-content 1.5rem;
   grid-template-areas:
-    "image"
-    "price"
-    "brand"
-    "name"
-    "colors";
+    'image'
+    'price'
+    'brand'
+    'name'
+    'colors';
 }
 
 .product-name {

@@ -23,7 +23,7 @@ const createMockProduct = (
   name: string,
   priceValue: number,
   tags: Tag[] = [],
-  allPricesList: Price[] = []
+  allPricesList: Price[] = [],
 ): Product => {
   const price: Price = {
     value: priceValue,
@@ -92,7 +92,7 @@ describe('ProductListComponent', () => {
           formattedValue: '120 €',
           priceType: 'UVP',
         },
-      ]
+      ],
     ),
     createMockProduct('P2', 'Product 2', 200),
     createMockProduct('P3', 'Product 3', 300),
@@ -124,14 +124,14 @@ describe('ProductListComponent', () => {
 
   it('should render a list item for each product', () => {
     const productItems = fixture.debugElement.queryAll(
-      By.css('a.product-card')
+      By.css('a.product-card'),
     );
     expect(productItems.length).toBe(mockProducts.length);
   });
 
   it('should render the mock product price component for each product', () => {
     const mockPriceComponents = fixture.debugElement.queryAll(
-      By.css('app-product-price')
+      By.css('app-product-price'),
     );
     expect(mockPriceComponents.length).toBe(mockProducts.length);
   });
@@ -148,14 +148,14 @@ describe('ProductListComponent', () => {
       expect(priceComp.allPrices).toEqual(product.allPrices);
       expect(priceComp.taglist).toEqual(product.taglist);
       expect(priceComp.defaultFormattedPrice).toBe(
-        product.price.formattedValue
+        product.price.formattedValue,
       );
     });
   });
 
   it('should render product name and brand', () => {
     const productItems = fixture.debugElement.queryAll(
-      By.css('a.product-card')
+      By.css('a.product-card'),
     );
     productItems.forEach((item, index) => {
       const product = mockProducts[index];
@@ -164,7 +164,7 @@ describe('ProductListComponent', () => {
 
       expect(brandElement).toBeTruthy();
       expect(brandElement.nativeElement.textContent).toContain(
-        product.brandName
+        product.brandName,
       );
       expect(nameElement).toBeTruthy();
       expect(nameElement.nativeElement.textContent).toContain(product.name);
@@ -174,7 +174,7 @@ describe('ProductListComponent', () => {
 
   it('should render the correct url for the a element', () => {
     const anchorElements = fixture.debugElement.queryAll(
-      By.css('a.product-card')
+      By.css('a.product-card'),
     );
 
     expect(anchorElements.length).toBe(mockProducts.length);

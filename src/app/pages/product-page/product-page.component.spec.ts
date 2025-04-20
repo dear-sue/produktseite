@@ -29,7 +29,7 @@ const createMockProduct = (
   name: string,
   brand: string,
   description: string,
-  priceValue: number
+  priceValue: number,
 ): Product => {
   const price: Price = {
     value: priceValue,
@@ -71,7 +71,7 @@ describe('ProductPageComponent', () => {
       'Sneaker Alpha',
       'Nike',
       'Comfortable running sneaker',
-      120
+      120,
     ),
     createMockProduct('P2', 'Boot Beta', 'Adidas', 'Stylish leather boot', 180),
     createMockProduct('P3', 'Sandal Gamma', 'Nike', 'Light summer sandal', 75),
@@ -81,8 +81,8 @@ describe('ProductPageComponent', () => {
         `Other Sneaker ${i + 1}`,
         'Puma',
         'Generic description',
-        90 + i
-      )
+        90 + i,
+      ),
     ),
   ];
 
@@ -137,7 +137,7 @@ describe('ProductPageComponent', () => {
       fixture.detectChanges();
       expect(component.filteredProducts.length).toBe(2);
       expect(
-        component.filteredProducts.some((p) => p.brandName === 'Nike')
+        component.filteredProducts.some((p) => p.brandName === 'Nike'),
       ).toBeTrue();
       expect(component.currentPage).toBe(1);
     }));
@@ -178,7 +178,7 @@ describe('ProductPageComponent', () => {
     it('should call onSearchChange when search input changes', fakeAsync(() => {
       spyOn(component, 'onSearchChange');
       const searchInput = fixture.debugElement.query(
-        By.css('input[type="text"]')
+        By.css('input[type="text"]'),
       ).nativeElement;
       searchInput.value = 'test';
       searchInput.dispatchEvent(new Event('input'));
@@ -195,7 +195,7 @@ describe('ProductPageComponent', () => {
 
     it('should calculate total pages correctly', () => {
       expect(component.totalPages.length).toBe(
-        Math.ceil(totalMockProducts / component.itemsPerPage)
+        Math.ceil(totalMockProducts / component.itemsPerPage),
       );
       expect(component.totalPages).toEqual([1, 2]);
     });
@@ -244,10 +244,10 @@ describe('ProductPageComponent', () => {
 
     it('should render the correct number of pagination buttons', () => {
       const pageButtons = fixture.debugElement.queryAll(
-        By.css('div.pagination button')
+        By.css('div.pagination button'),
       );
       const numberButtons = pageButtons.filter(
-        (btn) => !isNaN(parseInt(btn.nativeElement.textContent.trim()))
+        (btn) => !isNaN(parseInt(btn.nativeElement.textContent.trim())),
       );
       expect(numberButtons.length).toBe(2);
     });
@@ -255,10 +255,10 @@ describe('ProductPageComponent', () => {
     it('should call changePage when a pagination button is clicked', () => {
       spyOn(component, 'changePage');
       const pageButtons = fixture.debugElement.queryAll(
-        By.css('div.pagination button')
+        By.css('div.pagination button'),
       );
       const page2Button = pageButtons.find(
-        (btn) => btn.nativeElement.textContent.trim() === '2'
+        (btn) => btn.nativeElement.textContent.trim() === '2',
       );
       expect(page2Button).toBeTruthy();
       if (page2Button) {
@@ -271,14 +271,14 @@ describe('ProductPageComponent', () => {
       component.currentPage = 1;
       fixture.detectChanges();
       const mockListComponent = fixture.debugElement.query(
-        By.directive(MockProductListComponent)
+        By.directive(MockProductListComponent),
       ).componentInstance as MockProductListComponent;
       expect(mockListComponent.products.length).toBe(12);
 
       component.currentPage = 2;
       fixture.detectChanges();
       const mockListComponentPage2 = fixture.debugElement.query(
-        By.directive(MockProductListComponent)
+        By.directive(MockProductListComponent),
       ).componentInstance as MockProductListComponent;
       expect(mockListComponentPage2.products.length).toBe(3);
     });

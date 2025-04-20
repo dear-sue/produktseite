@@ -25,7 +25,7 @@ export class ProductPageComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private titleService: Title
+    private titleService: Title,
   ) {}
 
   get paginatedProducts(): Product[] {
@@ -66,7 +66,7 @@ export class ProductPageComponent implements OnInit {
 
         const matchesColor =
           product.availableColorIcons?.some((color) =>
-            color.altText.toLowerCase().includes(term)
+            color.altText.toLowerCase().includes(term),
           ) ?? false;
 
         const matchesSize =
@@ -74,8 +74,8 @@ export class ProductPageComponent implements OnInit {
             variant.sizeMap?.some(
               (size) =>
                 size.sizeSystem?.code === 'EU' &&
-                size.value.toLowerCase().includes(term)
-            )
+                size.value.toLowerCase().includes(term),
+            ),
           ) ?? false;
 
         return matchesBasic || matchesColor || matchesSize;
