@@ -1,0 +1,64 @@
+# === Node.js ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+# === Angular ===
+dist/
+.angular/
+.angular/cache/
+out-tsc/
+coverage/
+.tmp/
+browser/
+bazel-out/
+
+# === Build / Temp ===
+tmp/
+out/
+out-tsc/
+libpeerconnection.log
+testem.log
+connect.lock
+
+# === Tailwind CSS ===
+.tailwind-output.css
+
+# === Environment Files ===
+.env
+.env.*
+
+# === Editors ===
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+.idea/
+*.sublime-workspace
+*.launch
+.project
+.classpath
+.settings/
+.c9/
+
+# === OS-specific ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# === Git ===
+*.swp
+*.swo
+*.swn
+
+# === Misc ===
+.sass-cache/
+.history/
+typings/
+screenshots/
